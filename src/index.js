@@ -2,23 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-  
-
-        render(){
-            return(
-                <button
-                className="square"
-                onClick={() => this.props.onClick()}
-                >
-                    {this.props.value}
-                </button>
-            );
-        }
+function Square(props) {
+return(
+<button className='square' onClick={props.onClick}>
+    {props.value}
+</button>
 
 
-
-
+);
 }
 
 class Board extends React.Component {
@@ -33,7 +24,7 @@ class Board extends React.Component {
 
 handleClick(i) {
     const square = this.state.square.slice();
-    square[i] = 'X';
+    square[i] = this.state.square.slice();
     this.setState({square: square});
 }
 
@@ -42,9 +33,8 @@ handleClick(i) {
 
     renderSquare(i) {
         return(
-        
-        
-        <Square value={this.state.square[i]} 
+        <Square
+         value={this.state.square[i]} 
         onClick={() => this.handleClick(i)}
         />
         );
@@ -94,5 +84,6 @@ class Game extends React.Component {
 
 // ========================================
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = 
+ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
